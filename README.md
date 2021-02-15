@@ -28,8 +28,8 @@ $ npm run dev
 ## URLs
 
 Home Page: http://127.0.0.1:8000/  
-Admin Page: http://127.0.0.1:8000/admin/
-Create Table Page: http://127.0.0.1:8000/api/create-room/
+Admin Page: http://127.0.0.1:8000/admin/   
+Create Table Page: http://127.0.0.1:8000/api/create-room/   
 Create Room Page: http://127.0.0.1:8000/create/
 
 ## Author
