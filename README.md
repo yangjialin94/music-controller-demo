@@ -30,11 +30,12 @@ $ npm run dev
 
 ## URLs
 
-Home Page: http://127.0.0.1:8000/  
-Admin Page: http://127.0.0.1:8000/admin/  
-Show Table API Page: http://127.0.0.1:8000/api/room/  
-Create Table API Page: http://127.0.0.1:8000/api/create-room/  
-Create Room Page: http://127.0.0.1:8000/create/
+| Page             | URL                                    |
+| ---------------- | -------------------------------------- |
+| Admin            | http://127.0.0.1:8000/admin/           |
+| Show Table API   | http://127.0.0.1:8000/api/room/        |
+| Create Table API | http://127.0.0.1:8000/api/create-room/ |
+| Create Room      | http://127.0.0.1:8000/create/          |
 
 ## Author
 
