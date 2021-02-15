@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class Room extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ export default class Room extends Component {
     }
 
     getRoomDetails() {
-        fetch("/api/get-room" + "?code=" + this.roomCode)
+        fetch('/api/get-room' + '?code=' + this.roomCode)
             .then((response) => response.json())
             .then((data) => {
                 this.setState({

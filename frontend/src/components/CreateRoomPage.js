@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
+import { Button, Grid, Typography, TextField, FormHelperText, FormControl, Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { getCookie } from './CsrfToken';
 
 export default class CreateRoomPage extends Component {
   defaultVotes = 2;
@@ -21,25 +14,9 @@ export default class CreateRoomPage extends Component {
     };
 
     // bind functions to 'this' so that you can you 'this' keyword in the functions
-    this.getCookie = this.getCookie.bind(this);
     this.handleRoomButtonPressed = this.handleRoomButtonPressed.bind(this);
     this.handleVotesChange = this.handleVotesChange.bind(this);
     this.handleGuestCanPauseChange = this.handleGuestCanPauseChange.bind(this);
-  }
-
-  // from https://stackoverflow.com/questions/47477060/django-react-fetch-submitting-csrf-token-on-post-request
-  getCookie(name) {
-    if (!document.cookie) {
-      return null;
-    }
-    const token = document.cookie.split(';')
-      .map(c => c.trim())
-      .filter(c => c.startsWith(name + '='));
-
-    if (token.length === 0) {
-      return null;
-    }
-    return decodeURIComponent(token[0].split('=')[1]);
   }
 
   handleVotesChange(e) {
@@ -55,7 +32,7 @@ export default class CreateRoomPage extends Component {
   }
 
   handleRoomButtonPressed() {
-    let csrftoken = this.getCookie('csrftoken');
+    let csrftoken = getCookie('csrftoken');
     const requestOptions = {
       credentials: 'include',
       method: 'POST',

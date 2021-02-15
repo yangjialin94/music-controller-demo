@@ -36,6 +36,7 @@ $ npm run dev
 | Show Table API   | http://127.0.0.1:8000/api/room/        |
 | Create Table API | http://127.0.0.1:8000/api/create-room/ |
 | Create Room      | http://127.0.0.1:8000/create/          |
+| Join Room        | http://127.0.0.1:8000/join/            |
 
 ## Author
 
