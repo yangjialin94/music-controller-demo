@@ -18,7 +18,8 @@ $ python3 manage.py createsuperuser
 $ python3 manage.py runserver
 ```
 
-### Terminal 12
+### Terminal 2
+```
 $ cd music_controller/frontend
 $ npm install
 $ npm run dev
