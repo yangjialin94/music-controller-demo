@@ -6,7 +6,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
 
-
 # Create your views here.
 
 
@@ -81,6 +80,7 @@ class CreateRoomView(APIView):
                 room.guest_can_pause = guest_can_pause
                 room.votes_to_skip = votes_to_skip
                 room.save(update_fields=["guest_can_pause", "votes_to_skip"])
+                self.request.session["room_code"] = room.code
                 return Response(RoomSerializer(room).data, status=status.HTTP_200_OK)
             else:
                 room = Room(
@@ -89,6 +89,7 @@ class CreateRoomView(APIView):
                     votes_to_skip=votes_to_skip,
                 )
                 room.save()
+                self.request.session["room_code"] = room.code
                 return Response(
                     RoomSerializer(room).data, status=status.HTTP_201_CREATED
                 )
@@ -105,3 +106,16 @@ class UserInRoom(APIView):
 
         data = {"code": self.request.session.get("room_code")}
         return JsonResponse(data, status=status.HTTP_200_OK)
+
+
+class LeaveRoom(APIView):
+    def post(self, request, format=None):
+        if "room_code" in self.request.session:
+            self.request.session.pop("room_code")
+            host_id = self.request.session.session_key
+            room_results = Room.objects.filter(host=host_id)
+            if len(room_results) > 0:
+                room = room_results[0]
+                room.delete()
+
+        return Response({"Message": "Success"}, status=status.HTTP_200_OK)
